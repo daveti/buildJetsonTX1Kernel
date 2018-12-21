@@ -54,7 +54,7 @@ if [ -f /etc/nv_tegra_release ]; then
 
     # Load release and revision
     JETSON_L4T_RELEASE=$(echo $JETSON_L4T_STRING | cut -f 1 -d ',' | sed 's/\# R//g' | cut -d ' ' -f1)
-    JETSON_L4T_REVISION=$(echo $JETSON_L4T_STRING | cut -f 2 -d ',' | sed 's/\ REVISION: //g' | cut -d. -f1)
+    JETSON_L4T_REVISION=$(echo $JETSON_L4T_STRING | cut -f 2 -d ',' | sed 's/\ REVISION: //g')
     # unset variable
     unset JETSON_L4T_STRING
     
@@ -83,6 +83,10 @@ if [ -f /etc/nv_tegra_release ]; then
         esac
     elif [ "$JETSON_BOARD" = "TX1" ] ; then
         case $JETSON_L4T in
+            "28.2.0")
+                    JETSON_JETPACK="3.3"
+                    # Jetpack 3.3 uses the L4T 28.2
+                    JETSON_L4T="28.2" ;;
             "28.2") 
                     JETSON_JETPACK="3.2" ;;
             "28.1") 
