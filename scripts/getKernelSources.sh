@@ -12,5 +12,6 @@ tar -xvf public_release/kernel_src.tbz2
 rm -r public_release
 cd kernel/kernel-4.4
 zcat /proc/config.gz > .config
-make xconfig
-
+#make xconfig
+#daveti: we do not wanna connect X
+make menuconfig
